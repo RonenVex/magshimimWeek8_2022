@@ -3,7 +3,6 @@ import socket
 SERVER_IP = "127.0.0.1"
 SERVER_PORT = 1234
 
-
 def print_options():
     """
     The following function will print the options available for the user
@@ -18,7 +17,8 @@ def print_options():
     5) The origin album of a certain song
     6) Searching for a song by it's name
     7) Searching for a song by it's lyrics
-    8) Quit""")
+    8) statistics for the 50 most common words
+    9) Quit""")
 
 
 def request():
@@ -40,13 +40,13 @@ def request():
             print_options()
             option = int(input("Enter the option you choose: "))
 
-            while option < 1 or option > 8: #Input Checking
+            while option < 1 or option > 9: #Input Checking
                 print("Invalid input, try again")
                 option = int(input("Enter the option you choose: "))
             
             msg = "ASK_FUNCTION:{" + str(option * 10) + "}"
 
-            if option > 1 and option < 8:
+            if option > 1 and option < 9:
                 asking = ""
                 if option == 2:
                     asking = "Enter the name of the album: "
@@ -65,7 +65,7 @@ def request():
             
             server_msg = server_msg.decode()
             
-            if option == 8:
+            if option == 9:
                 quitting = True
 
             else:
