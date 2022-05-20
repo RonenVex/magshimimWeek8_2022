@@ -113,3 +113,12 @@ def lyrics_with_word(word):
         message = "SEND_SONGS_LIST:{" + song_list + "}"
         return message
     return NO_LYRICS_WITH_WORD_ERROR
+
+def word_statistics():
+    common_words = {}
+    for song in songs_dict.values():
+        for word in song["lyrics"].split(" "):
+            if word not in common_words:
+                common_words[word] = 0
+            common_words[word] += 1
+    return str(common_words)
