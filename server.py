@@ -45,6 +45,9 @@ def conversation():
                 client_soc.sendall(data.lyrics_with_word(additional_data).encode())
 
             elif msg_code == 80:
+                client_soc.sendall(data.word_statistics().encode())
+
+            elif msg_code == 90:
                 quitting = True
                 client_soc.sendall("Thank you for using our system!".encode())
             else:
